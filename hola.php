@@ -105,7 +105,7 @@
 		</div>
 		<br />
 		<br />
-		<div class="righted shadow">Creado por el Ing. Rayne Flores</div>
+		<div class="righted shadow">Creado por el Ing. Rayne Flores 2018</div>
     <div class="righted shadow fuente_min"> Version del Navegador:  <?php echo $_SERVER['HTTP_USER_AGENT']; ?></div>
 	</body>
 	</style>
