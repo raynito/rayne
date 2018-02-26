@@ -1,0 +1,167 @@
+head {
+	text-align: center;
+}
+table {
+	border-width: 2px;
+	border-style: solid;
+	border-color: cyan;
+}
+.td-diff {
+	text-align: justify;
+	border-width: 2px;
+	border-style: solid;
+}
+td {
+	text-align: center;
+	border-width: 2px;
+	border-style: solid;
+	border-color: cyan;
+}
+th {
+	border-width: 2px;
+	border-style: solid;
+	border-color: cyan;
+	background-color: blue;
+	color: white;
+}
+/* Estilos Cominados para centrar la tabla en el <div>*/
+div.centerTable{
+    text-align: center;
+}
+div.centerTable table {
+	margin: 0 auto;
+    text-align: left;
+}
+/*Fin estilos combinados*/
+.p-text {
+	font-family: "Arial";
+}
+.div-center {
+	background-color: #819FF7;
+	border-style: groove;
+	color: black;
+	text-align: center;
+	position: absolute;
+    left: 45%;
+		top:10%;
+}
+.inLine{
+	display: inline-block;
+}
+.table-classy {
+	font-family: "Arial";
+}
+.table-diff {
+	background-color: white;
+	color: black;
+	text-align: center;
+}
+.table-diff-black {
+	font-family: "Arial";
+	background-color: white;
+	border-color: black;
+	color: black;
+	text-align: center;
+	text-shadow: initial;
+}
+.table-diff-center {
+	font-family: "Arial";
+	background-color: white;
+	border-color: black;
+	color: black;
+	text-align: initial;
+	text-shadow: initial;
+}
+.table-diff-yes {
+	font-family: "Arial";
+	border-color: black;
+	color: black;
+	text-align: center;
+	text-shadow: initial;
+	background-color: green;
+}
+.table-diff-no {
+	font-family: "Arial";
+	border-color: black;
+	color: black;
+	text-align: center;
+	text-shadow: initial;
+	background-color: red;
+}
+.table-diff5 {
+	background-color: yellow;
+	color: black;
+	text-align: center;
+}
+.table-diff6 {
+	background-color: magenta;
+	color: black;
+	text-align: center;
+}
+.table-diff7 {
+	background-color: cyan;
+	color: black;
+	text-align: center;
+}
+.table-diff4 {
+	background-color: white;
+	border-color: white;
+	color: black;
+	text-align: justify;
+}
+.table-diff3 {
+	background-color: white;
+	border-color: white;
+	color: black;
+	text-align: center;
+}
+.table-diff2{
+	text-align: center;
+}
+.td-just {
+	text-align: justify;
+}
+.centered{
+	text-align: center;
+}
+.righted{
+	text-align: right;
+}
+.spacing{
+	letter-spacing: 2px;
+}
+.shadow{
+	text-shadow: 2px 2px 5px blue;
+}
+
+.mostrar{
+	border-style: solid;
+	border-color: black;
+}
+
+.fuente_min {
+	font-size: 10px;
+}
+
+.boton a {
+    color: white;
+    background: #000099 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAyCAYAAACd+7GKAAAAJklEQVQIW2P4//+/NxMDA8N/JgYGhn+oLDQu7Vk/GP4zMXDQx3IA0To1YWcEwtQAAAAASUVORK5CYII=") repeat-x;
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    margin: 3px;
+}
+.boton a:hover {
+    background: #663300 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAyCAYAAACd+7GKAAAAJklEQVQIW2P4//+/NxMDA8N/JgYGhn+oLDQu7Vk/GP4zMXDQx3IA0To1YWcEwtQAAAAASUVORK5CYII=") repeat-x;
+}
+div#highcharts-lrd78ly-0.highcharts-container {
+	width: 1000px;
+	text-align: right;
+}
