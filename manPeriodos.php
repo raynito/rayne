@@ -9,10 +9,13 @@
 	<h1 class="centered2">Menu de Nomina</h1>
 	<body>
 		<div>
-			<table class="table-diff4">
+			<table>
 				<tr>
 					<td class="boton table-diff4">
 						<a href="./manPeriodos.php">Periodos</a>
+					</td>
+					<td rowspan="5">
+						Mantenimiento de Periodos de Nomina
 					</td>
 				</tr>
 				<tr>
