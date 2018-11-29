@@ -20,8 +20,12 @@
       $user=$_POST['user'];
       $cambios="Version Inicial del Servicio";
       $ambiente=1;
+      $active=htmlspecialchars($_POST['activel']);
+      $server=htmlspecialchars($_POST['server']);
+      $url="http://192.168.1.64:5010/".$service."/swagger-ui.html";
+      $test=htmlspecialchars($_POST['test']);
 
-      $conexiones->insertServices($service, $description, $version, $fecha_actual, $user, $ambiente);
+      $conexiones->insertServices($service, $description, $version, $fecha_actual, $user, $active, $server, $url, $test);
 
       $rawdataQ = $conexiones->getLastServiceId();
       $serviceId= $rawdataQ[0][0];
@@ -29,7 +33,10 @@
       $conexiones->insertVersion($serviceId, $version, $fecha_actual, $user, $cambios, $ambiente);
 
     ?>
-    Ha ingresado En ambiente de Desarrollo el Servicio: <?php echo $service; ?>,<br />
+    Ha ingresado En ambiente de Desarrollo el Servicio: <?php echo $service; ?>,
+    <br />
+    En el Server de los Servicios <?php echo $server; ?>,
+    <br />
     Con la Siguiente descripcion: <?php echo $description; ?>, <br />
     la Version: <?php echo $version?>, <br />
     de Fecha: <?php echo $fecha_actual; ?>, <br />

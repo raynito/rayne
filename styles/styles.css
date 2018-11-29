@@ -46,7 +46,7 @@ div.centerTable table {
 		top:10%;
 }
 .inLine{
-	display: inline-block;
+	display: inline-grid;
 }
 .table-classy {
 	font-family: "Arial";
@@ -116,6 +116,9 @@ div.centerTable table {
 	text-align: center;
 }
 .table-diff2{
+	text-align: center;
+}
+.table-diff23{
 	text-align: center;
 }
 .td-just {

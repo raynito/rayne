@@ -35,7 +35,7 @@
               <option value="0">Selección:</option>
               <?php
                 $mysqli = new mysqli('localhost', 'root', '', 'metrics');
-                $query = $mysqli -> query ("SELECT id, name FROM services");
+                $query = $mysqli -> query ("SELECT id, name FROM services WHERE inActive = 'Si'");
                 while ($valores = mysqli_fetch_array($query)) {
                   echo '<option value="'.$valores[id].'">'.$valores[name].'</option>';
                 }

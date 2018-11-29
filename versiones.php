@@ -44,7 +44,7 @@
               <option value="0">Selección:</option>
               <?php
                 $mysqli = new mysqli('localhost', 'root', '', 'metrics');
-                $query = $mysqli -> query ("SELECT id_user, nombre FROM users");
+                $query = $mysqli -> query ("SELECT id_user, nombre FROM users WHERE active = 1");
                 while ($valores = mysqli_fetch_array($query)) {
                   echo '<option value="'.$valores[id_user].'">'.$valores[nombre].'</option>';
                 }
@@ -69,7 +69,7 @@
         </tr>
         <tr>
 			  	<th colspan="5" class="table-diff">
-            <input type="submit" class="centered boton" value="Guardar"/>
+            <input type="submit" value="Guardar" class:"boton"/>
           </th>
 			  </tr>
       </table>
@@ -102,7 +102,7 @@
              <td class="td-diff fuente_min"><?php echo $servicio; ?></td>
              <td class="td-diff fuente_min"><?php echo $version; ?></td>
              <td class="td-diff fuente_min"><?php echo $user; ?></td>
-             <td class="td-diff fuente_min" width="200"><?php echo $cambios; ?></td>
+             <td class="td-diff fuente_min" width="300"><?php echo $cambios; ?></td>
              <td class="td-diff fuente_min"><?php echo $fecha; ?></td>
            </tr>
       <?php

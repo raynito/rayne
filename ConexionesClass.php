@@ -83,11 +83,11 @@ class ConexionesTable{
         return $consulta;
     }
 
-    function insertServices($service, $description, $version, $fecha_actual, $user){
+    function insertServices($service, $description, $version, $fecha_actual, $user, $active, $server, $url, $test){
       $conexion = $this->conectarBD();
       $sql = "INSERT INTO services
-                      (name, description, version, dates, last_user_id)
-              VALUES ('".$service."','".$description."','".$version."','".$fecha_actual."','.$user.')";
+                      (name, description, version, dates, last_user_id, inActive, server, url, inTest)
+              VALUES ('".$service."','".$description."','".$version."','".$fecha_actual."','.$user.','".$active."','".$server."','".$url."','".$test."')";
       $consulta = mysqli_query($conexion,$sql);
 
       if(!$consulta){
@@ -125,9 +125,9 @@ class ConexionesTable{
       return $consulta;
     }
 
-    function insertUsers($nombre, $mail){;
+    function insertUsers($nombre, $mail, $active, $username, $password){
       $conexion = $this->conectarBD();
-      $sql = "INSERT INTO users (nombre, mail) VALUES ('".$nombre."','".$mail."')";
+      $sql = "INSERT INTO users (nombre, mail, active, username, password) VALUES ('".$nombre."','".$mail."',".$active.",'".$username."','".$password."')";
       $consulta = mysqli_query($conexion,$sql);
 
       if(!$consulta){
@@ -142,11 +142,26 @@ class ConexionesTable{
 	                   S.description,
                      S.version,
                      S.dates,
-                     U.nombre
+                     U.nombre,
+                     S.inActive,
+                     S.server,
+                     S.inTest
        FROM services S
        INNER JOIN users U
 	      ON U.id_user = S.last_user_id
         ORDER BY S.id;";
+      return $this->getArraySQL($sql);
+    }
+
+    function getServiceName($ide){
+      $sql = "SELECT S.Name
+       FROM services S ;";
+      return $this->getArraySQL($sql);
+    }
+
+    function getUrlTests(){
+      $sql = "SELECT S.Name, S.url
+       FROM services S WHERE S.inTest = 'Si' ORDER BY S.server DESC, S.Name;";
       return $this->getArraySQL($sql);
     }
 
@@ -220,7 +235,7 @@ class ConexionesTable{
     }
 
     function getAllInfoP(){
-      $sql = "SELECT * FROM Con_Rec WHERE ambiente = 1";
+      $sql = "SELECT * FROM Con_Rec WHERE ambiente = 1;";
         return $this->getArraySQL($sql);
     }
     function getLastServiceId(){
@@ -231,6 +246,31 @@ class ConexionesTable{
       $sql = "SELECT * FROM users WHERE username='".$usuario."' AND password='".$password."'";
         return $this->getArraySQL($sql);
     }
+
+    function activateUser($id){
+      $conexion = $this->conectarBD();
+      $sql = "UPDATE users SET active = 1 WHERE id_user = ". $id .";";
+      $consulta = mysqli_query($conexion,$sql);
+
+      if(!$consulta){
+          echo "No se ha podido insertar en la base de datos<br><br>".mysqli_error($conexion);
+      }
+      $this->desconectarBD($conexion);
+      return $consulta;
+    }
+
+    function inactivateUser($id){
+      $conexion = $this->conectarBD();
+      $sql = "UPDATE users SET active = 0 WHERE id_user = ". $id .";";
+      $consulta = mysqli_query($conexion,$sql);
+
+      if(!$consulta){
+          echo "No se ha podido insertar en la base de datos<br><br>".mysqli_error($conexion);
+      }
+      $this->desconectarBD($conexion);
+      return $consulta;
+    }
+
     function getProgress(){
       $sql="SELECT 	S.name,
 		                I.port,
@@ -246,12 +286,18 @@ class ConexionesTable{
                     FROM implementation I
             INNER JOIN services S
             ON I.serviceid = S.id
+            WHERE S.inActive = 'Si'
             ORDER BY I.port;";
           return $this->getArraySQL($sql);
     }
 
     function queryProgress($service){
-      $sql = "SELECT serviceId FROM implementation where id = ".$service.";";
+      $sql = "SELECT I.id,
+                     S.name
+              FROM implementation I
+              INNER JOIN services S
+              ON S.id = I.serviceid
+              WHERE S.Id = ".$service.";";
       return $this->getArraySQL($sql);
     }
 
@@ -260,6 +306,7 @@ class ConexionesTable{
       $sql = "INSERT INTO implementation
                           (serviceid, port, webserver, CS, ES, SBAS, Ribbon, Hystrix, HeCache, Zuul, Oath2)
                           VALUES (".$service.",".$port.",'".$webserver."','".$cs."','".$es."','".$sbas."','".$ribbon."','".$hystrix."','".$hecache."','".$zuul."','".$oauth."')";
+
 
       $consulta = mysqli_query($conexion,$sql);
 

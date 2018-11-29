@@ -24,19 +24,25 @@
       $hecache=htmlspecialchars($_POST['menuhe']);
       $zuul=htmlspecialchars($_POST['menuzu']);
       $oauth=htmlspecialchars($_POST['menuoa']);
-      $varnish = 0;
+      $ide = 0;
+      $nombre = "";
 
       $rawdata = $conexiones->queryProgress($service);
       for($i=0;$i<count($rawdata);$i++){
-        $varnish = $rawdata[$i][0];
+        $ide = $rawdata[$i][0];
+        $nombre = $rawdata[$i][1];
       }
-      if ($varnish > 0){
-        $conexiones->updateProgress($service, $port, $webserver, $cs, $es, $sbas, $ribbon, $hystrix, $hecache, $zuul, $oauth);
-        echo "Ha Modificado El Progreso para el servicio Seleccionado";
-      }else{
-        $conexiones->insertProgress($service, $port, $webserver, $cs, $es, $sbas, $ribbon, $hystrix, $hecache, $zuul, $oauth);
-        echo "Ha Ingresado El Progreso para el servicio Seleccionado";
-      }
+          if ($ide != 0){
+            $conexiones->updateProgress($service, $port, $webserver, $cs, $es, $sbas, $ribbon, $hystrix, $hecache, $zuul, $oauth);
+            echo "Ha Modificado El Progreso para el servicio ". $nombre;
+          }else{
+            $rawdata = $conexiones->getServiceName($ide);
+            for($i=0;$i<count($rawdata);$i++){
+              $nombre = $rawdata[$i][0];
+            }
+            $conexiones->insertProgress($service, $port, $webserver, $cs, $es, $sbas, $ribbon, $hystrix, $hecache, $zuul, $oauth);
+            echo "Ha Ingresado El Progreso para el servicio ". $nombre;
+          }
     ?>
     <br />
 

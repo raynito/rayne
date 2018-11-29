@@ -82,6 +82,9 @@
 					<td class="centered boton table-diff3">
 						<a href="./implementation.php">Evolución</a>
 					</td>
+					<td class="centered boton table-diff3">
+						<a href="./pruebas.php">Pruebas</a>
+					</td>
 				</tr>
 			</table>
 		</div>

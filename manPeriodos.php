@@ -9,7 +9,7 @@
 	<h1 class="centered2">Menu de Nomina</h1>
 	<body>
 		<div>
-			<table>
+			<table class="table-diff4">
 				<tr>
 					<td class="boton table-diff4">
 						<a href="./manPeriodos.php">Periodos</a>
@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td class="boton table-diff4 centered">
-						<a href="./hola.php">Volver</a>
+						<a href="./nomenu.php">Volver</a>
 					</td>
 				</tr>
 			</table>
